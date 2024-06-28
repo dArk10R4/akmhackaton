@@ -1,0 +1,21 @@
+superuser admin, user yarada bilir
+
+user login olur
+
+login olandan sonra ana sehifede onun submit elediyi reportlarin statistikasi cixir:
+nece dene report olub nece faiz critical, medium, low-dur
+hansi tipde var
+
+
+userin reportlari olacaq
+
+user yeni report yarada bilecek 
+
+user report yaradanda gemini-ye atacaq
+geminiden gelen cavabi report kimi save eleyecek
+reportlari lazimli adamlara mail olaraq gondere bilecek
+
+admin reportlari idare edecek
+
+
+
