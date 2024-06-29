@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 
 import { Form, Input, Button, Checkbox, Upload } from "antd";
+import './reportDetail.css'
 
 function CreateReport() {
   const [reportData, setReportData] = useState("");

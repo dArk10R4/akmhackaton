@@ -1,10 +1,12 @@
 const Report = require("../Models/ReportModel");
+const User = require("../Models/UserModel");
 const upload = require("../Middlewares/uploadMiddleware");
 const path = require("path");
 const { validateStatus } = require("../Util/ValidateReport");
 const { generateReportWithText } = require("../Util/GenerateReport");
 const mongoose = require("mongoose");
 const fs = require("fs");
+const sendNotification = require("../Util/mailSender");
 
 async function createReport(req, res) {
   upload(req, res, async (err) => {
@@ -121,10 +123,19 @@ async function getReports(req, res) {
     let reports;
 
     if (req.user.type === "admin") {
-      reports = await Report.find();
+      reports = await Report.find().sort({ createdAt: -1 });
     } else {
-      reports = await Report.find({ reportOwner: req.user.id });
+      reports = await Report.find({ reportOwner: req.user.id }).sort({ createdAt: -1 });
     }
+
+    // let admins = await User.find({ type: "admin" });
+
+    // for (let i = 0; i < admins.length; i++) {
+    //   let admin = admins[i];
+    //   if (admin.email !== req.user.email) {
+    //     sendNotification(reports[0], admin.email, "http://localhost:5173/report/" + reports[0].reportId);
+    //   }
+    // }
 
     return res.status(200).json({ reports });
   } catch (error) {
@@ -160,10 +171,30 @@ async function updateReportStatus(req, res) {
   }
 }
 
+async function deleteReport(req, res) {
+  const { reportId } = req.params;
+  try {
+    const report = await Report.findOneAndDelete({"_id":reportId});
+
+    // if (!report) {
+    //   return res.status(404).json({ message: "Report not found" });
+    // }
+    // await report.remove();
+
+    return res.status(200).json({ message: "Report deleted" });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
+  }
+}
+
 module.exports = {
   createReport,
   getImage,
   getReportById,
   updateReportStatus,
   getReports,
+  deleteReport
 };

@@ -12,8 +12,8 @@ const reportSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["new", "assigned", "analyzing", "closed"],
-      default: "new",
+      enum: ["not assigned", "assigned", "under investigation", "closed"],
+      default: "not assigned",
     },
     severity: {
       type: Number,

@@ -48,7 +48,7 @@ async function loginUser(req, res) {
       { id: user._id, username: user.username, type: user.type },
       JWT_SECRET,
       {
-        expiresIn: "1h",
+        expiresIn: "12h",
       }
     );
 

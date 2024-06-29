@@ -1,0 +1,88 @@
+
+  
+  .report-page {
+    width: 8.5in;
+    /* height: 11in; */
+    margin: 0 auto;
+    padding: 1in;
+    border: 1px solid #000;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always; /* Ensures the content breaks into multiple pages if printed */
+  }
+  
+  
+  .line {
+    flex-grow: 1;
+    height: 2px;
+    background: #000;
+  }
+  
+  .logo {
+    width: 50px;
+    height: auto;
+  }
+  
+  .report-info {
+    margin-bottom: 20px;
+  }
+  
+  
+  hr {
+    border: 1px solid #000;
+    margin: 20px 0;
+  }
+  
+  hr.dotted {
+    border-top: 1px dotted #000;
+  }
+  
+  .description {
+    text-align: center;
+    margin: 40px ;
+    width: 100%;
+    font-size: 80px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .description h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .description p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .middle-content {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+  }
+  
+  .middle-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .middle-content p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .top-sections {
+    margin-top: 20px;
+  }
+  
+  /* .top-sections p {
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+  } */
+  
+  

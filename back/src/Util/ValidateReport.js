@@ -1,5 +1,5 @@
 function validateStatus(status) {
-    const REPORT_STATUS = ['new', 'assigned', 'analyzing', 'closed']
+    const REPORT_STATUS = ["not assigned", "assigned", "under investigation", "closed"]
     return REPORT_STATUS.includes(status)
 
 }

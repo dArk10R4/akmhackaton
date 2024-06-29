@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import "./App.css";
 import Login from "./pages/Login";
 import ReportList from "./pages/Report/ReportList";
+import ReportDetail from "./pages/Report/ReportDetail";
 
 function App() {
   return (
@@ -33,12 +34,21 @@ function App() {
           }
         />
         <Route
-        path="/reports"
-        element={
-          <MainLayout>
-            <ReportList />
-          </MainLayout>
-        }/>
+          path="/reports"
+          element={
+            <MainLayout>
+              <ReportList />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/reports/:reportId"
+          element={
+            <MainLayout>
+              <ReportDetail />
+            </MainLayout>
+          }
+        />
 
         <Route path="/login" element={<Login />} />
       </Routes>

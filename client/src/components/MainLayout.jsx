@@ -1,16 +1,27 @@
 import React from "react";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 const { Header, Content, Footer } = Layout;
+import { useNavigate } from "react-router-dom";
 
-const items = new Array(3).fill(null).map((_, index) => ({
-  key: String(index + 1),
-  label: `nav ${index + 1}`,
-}));
+const navigation = [
+  { label: "Home", key: 1, target: "/" },
+  { label: "Reports", key: 2, target:"/reports" },
+  { label: "Create Report", key: 3, target:"/report/create" },
+];
 
 function MainLayout({ children }) {
+  const navigate = useNavigate();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const handleMenuClick = ({ key }) => {
+    const { target } = navigation.find(item => item.key == key) || {};
+    console.log(target)
+    if (target) {
+      navigate(target);
+    }
+  };
   return (
     <Layout
       style={{
@@ -32,12 +43,13 @@ function MainLayout({ children }) {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items}
+          defaultSelectedKeys={["1"]}
+          items={navigation}
           style={{
             flex: 1,
             minWidth: 0,
           }}
+          onClick={handleMenuClick}
         />
       </Header>
       <Content
