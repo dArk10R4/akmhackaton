@@ -13,5 +13,6 @@ router.get('/user/:id', isLoggedIn, isAdminOrOwner, userController.getUserById);
 router.put('/user/:id', isLoggedIn, isAdminOrOwner, userController.updateUser);
 router.delete('/user/:id', isLoggedIn, isAdminOrOwner, userController.deleteUser);
 router.put('/user/:id/changePassword', isLoggedIn, isAdminOrOwner, userController.changePassword);
+router.get('/me', isLoggedIn, userController.me);
 
 module.exports = router;

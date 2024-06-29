@@ -1,4 +1,5 @@
 const UserModel = require("../Models/UserModel");
+const jwt = require('jsonwebtoken');
 const { validateUser, validateLogin, validateUserUpdate, validatePassword,  } = require("../Util/ValidateUser");
 const JWT_SECRET = process.env.JWT_SECRET;
 const bcrypt = require('bcryptjs');
@@ -21,7 +22,9 @@ async function createUser(req, res) {
 }
 
 async function loginUser(req, res) {
+
   const data = ({ username, password } = req.body);
+  console.log(data);
 
   if (!validateLogin(data)) {
     return res.status(400).json({ message: "Invalid data" });
@@ -51,6 +54,7 @@ async function loginUser(req, res) {
 
     return res.status(200).json({ message: "Login successful", token });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ message: "Internal server error" });
   }
 }
@@ -137,4 +141,8 @@ async function changePassword(req, res) {
     }
 }
 
-module.exports = { createUser, loginUser, getUsers, getUserById, updateUser, deleteUser, changePassword };
+async function me(req, res) {
+    return res.status(200).json(req.user);
+}
+
+module.exports = { createUser, loginUser, getUsers, getUserById, updateUser, deleteUser, changePassword, me };

@@ -15,7 +15,7 @@ function MainLayout({ children }) {
     <Layout
       style={{
         width: "100vw",
-        minHeight: "100vh"
+        minHeight: "100vh",
       }}
     >
       <Header
@@ -40,7 +40,13 @@ function MainLayout({ children }) {
           }}
         />
       </Header>
-      {children}
+      <Content
+        style={{
+          padding: '0 48px',
+        }}
+      >
+        {children}
+      </Content>
       <Footer
         style={{
           textAlign: "center",

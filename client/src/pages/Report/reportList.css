@@ -1,0 +1,11 @@
+#reports-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.report-icon {
+    background: round;
+    width: 30px;
+    height: 30px;
+    background-image: url(https://cdn-icons-png.flaticon.com/512/3093/3093748.png);
+}

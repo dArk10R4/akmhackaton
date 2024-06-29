@@ -3,10 +3,12 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
+import CreateReport from "./pages/Report/CreateReport";
 
 import Home from "./pages/Home";
 import "./App.css";
 import Login from "./pages/Login";
+import ReportList from "./pages/Report/ReportList";
 
 function App() {
   return (
@@ -22,6 +24,21 @@ function App() {
             }
           />
         </>
+        <Route
+          path="/report/create"
+          element={
+            <MainLayout>
+              <CreateReport />
+            </MainLayout>
+          }
+        />
+        <Route
+        path="/reports"
+        element={
+          <MainLayout>
+            <ReportList />
+          </MainLayout>
+        }/>
 
         <Route path="/login" element={<Login />} />
       </Routes>
